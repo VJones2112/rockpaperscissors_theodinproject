@@ -47,52 +47,31 @@
                 return 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. Computer wins!';
             }
         }
-
-        // const playerSelection = 'scissors';
-        // const computerSelection = computerPlay();
-        // console.log(playRound(playerSelection, computerSelection))
-
-        function playerInput() {
-            //I need to get rid of .toLowerCase() below if I want null to register.
-            let playerInput = window.prompt('What\'s your choice?').toLowerCase();
-            if (playerInput == '' || playerInput == null) {
-                return 'Please enter rock, paper, or scissors.';
-            } else if (playerInput == 'rock' || playerInput == 'paper' || playerInput == 'scissors') {
-                return 'You chose ' + playerInput + '.';
-            } else {
-                return 'You must choose rock, paper, or scissors.'
-            }
-        }
-        //console.log(playerInput())
+        
+        // I really wanted below to work. Oh well. I'm leaving it in for when I learn more JS and can figure it out.
+        // function playerInput() {
+        //     //I need to get rid of .toLowerCase() below if I want null to register.
+        //     let playerInput = window.prompt('What\'s your choice?').toLowerCase();
+        //     if (playerInput == '' || playerInput == null) {
+        //         return 'Please enter rock, paper, or scissors.';
+        //     } else if (playerInput == 'rock' || playerInput == 'paper' 
+        //         || playerInput == 'scissors') {
+        //         return 'You chose ' + playerInput + '.';
+        //     } else {
+        //         return 'You must choose rock, paper, or scissors.'
+        //     }
+        // }
 
         function game() {
             for (i = 0; i < 5; i++) {
-                let playerSelection = playerInput();
+                let playerSelection = window.prompt('Rock, paper, or scissors?');
                 const computerSelection = computerPlay();
                 playRound(playerSelection, computerSelection)
                 console.log(playRound(playerSelection, computerSelection));
             }
-            // playerChoice = playerSelection
-            // playerInput();
-            // playRound();
-            // playerInput = window.prompt('What\'s your choice?');
-            // playerInput = playerSelection;
-            // playerInput = playRound(playerSelection);
-            // playRound(playerInput, computerSelection)
-
-            // for (let i = 0; i < 5; i++) {
-            //     let playerSelection = prompt('What\'s your choice? Rock, paper, or scissors?'); 
-            //     let computerSelection = computerPlay;
-            //     playRound(playerSelection, computerSelection);
-            //     console.log(playRound(playerSelection, computerSelection));
-            // }
-
-            // playerInput = playerSelection;
-
-            // return playRound();
-            //}
-
-            game()
+        }
+        
+        game()
 
     </script>
 
