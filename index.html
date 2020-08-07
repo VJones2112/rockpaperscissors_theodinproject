@@ -21,35 +21,31 @@
 <p>Choose your weapon:</p>
 
 <div id="buttons">
-<button id="rock" data-key="82" class="key" onkeydown="playRound('rock', computerPlay())"><kbd>R</kbd>ock</button>
+<button class="choices" id="rock" data-key="82" class="key"><kbd>R</kbd>ock</button>
 
-<button id="paper" data-key="80" class="key"><kbd>P</kbd>aper</button>
+<button class="choices" id="paper" data-key="80" class="key"><kbd>P</kbd>aper</button>
 
-<button id="scissors" data-key="83" class="key"><kbd>S</kbd>cissors</button>
+<button class="choices" id="scissors" data-key="83" class="key"><kbd>S</kbd>cissors</button>
 
-</div>
+</div>  <!-- Ends buttons div -->
 
-<!-- <button id="rock" data-key="82" class="key" onclick="playRound(rock, computerPlay())"><kbd>R</kbd>ock</button>
 
-<button id="paper" data-key="80" class="key" onclick="playRound(paper, computerSelection)"><kbd>P</kbd>aper</button>
-
-<button id="scissors" data-key="83" class="key" onclick="playRound(scissors, computerSelection)"><kbd>S</kbd>cissors</button> -->
-
-</div>
 
 <div id="resultsDiv">
-<p id="resultsPara">Results go here</p>
 
-<!-- ******************************************************** -->
-
-
-<!-- ******************************************************** -->
-
-
+<h3>Computer Choice:</h3>
+<p id="computerChoice"></p>
+<h3>Player Choice: </h3>
+<p id="playerChoice"></p>
+<p id="results">Results go here</p>
 
 
+</div> <!-- Ends results div -->
 
-</div>
+
+
+</div> <!-- Ends container div -->
+
 <script src="script.js">
 </script>
 
