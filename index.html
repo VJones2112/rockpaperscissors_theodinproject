@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Rock, Paper, Scissors</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="This is what Google will show.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="icon" href="victory.png"> -->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://use.fontawesome.com/5db464c560.js"></script>
+</head>
+
+<body>
+<div id="container">
+<h1>Rock, Paper, Scissors</h1>
+
+<!-- <h2>Play against the computer!</h2> -->
+
+<p>Choose your weapon</p>
+
+<div id="buttons">
+
+<button class="choices" id="rock" data-key="82" class="key">
+    <kbd>
+    <i class="fa fa-hand-rock-o fa-2x" aria-hidden="true"></i>
+</kbd>
+</button>
+
+<button class="choices" id="paper" data-key="80" class="key">
+    <i class="fa fa-hand-paper-o fa-2x" aria-hidden="true"></i>
+</button>
+
+<button class="choices" id="scissors" data-key="83" class="key">
+    <i class="fa fa-hand-scissors-o fa-2x" aria-hidden="true"></i>
+</button>
+
+</div>  <!-- Ends buttons div -->
+
+
+
+<div id="resultsDiv">
+
+<p id="computerChoice"></p>
+<p id="playerChoice"></p>
+<p id="results"></p>
+
+</div> <!-- Ends results div -->
+
+
+
+</div> <!-- Ends container div -->
+
+<script src="script.js">
+</script>
+
+</body>
+
+</html>
