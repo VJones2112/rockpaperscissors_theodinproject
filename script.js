@@ -2,7 +2,6 @@
     // Why do my buttons lose their icon upon pressing?
 
 
-
 // Declare variables globally
 let playerSelection;
 let computerSelection;
@@ -53,9 +52,8 @@ function playRound() {
     }
 }
 
-// Add keydown events
 
-// // Keydown Events
+// Add keydown events
 window.addEventListener('keydown', event => {
     if (event.key == 'r') {
         playerSelection === 'rock';
@@ -69,6 +67,27 @@ window.addEventListener('keydown', event => {
     }
 })
 
+
+
+// // Get results
+// function playRound(playerSelection, computerSelection) {
+//     computerSelection = computerPlay();
+//     if (playerSelection === computerSelection) {
+//         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. It\'s a tie!';
+//     } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
+//         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. You win!';
+//     } else if (playerSelection == 'rock' && computerSelection == 'paper') {
+//         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. Computer wins!';
+//     } else if (playerSelection == 'paper' && computerSelection == 'rock') {
+//         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. You win!';
+//     } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+//         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. Computer wins!';
+//     } else if (playerSelection == 'scissors' && computerSelection == 'paper') {
+//         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. You win!';
+//     } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
+//         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. Computer wins!';
+//     }
+// }
 
 
 
