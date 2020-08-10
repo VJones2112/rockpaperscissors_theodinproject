@@ -51,9 +51,18 @@ button {
     transition: transform .2s;
 }
 
-button:hover {
+button:hover { 
     transform: rotate(45deg) scale(1.25);
 }
+
+/* .hoverTransform {
+    transform: rotate(45deg) scale(2);
+    color: red;
+} */
+
+/* .notransition {
+    transition: none !important;
+} */
 
 #results {
     padding: 0 1rem 1rem 1rem;

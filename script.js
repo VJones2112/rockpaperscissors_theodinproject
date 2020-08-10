@@ -1,8 +1,7 @@
-// 8.8.20 My keydown events aren't working except the alert :(
-    // Why do my buttons lose their icon upon pressing?
+// 8.10.20 Think it's done!?
+// Work on styling the results and resetting start text
 
-
-// Declare variables globally
+// Declare variables
 let playerSelection;
 let computerSelection;
 var result = playRound();
@@ -10,8 +9,14 @@ const displayResult = document.getElementById('results');
 const computerChoice = document.getElementById('computerChoice');
 const playerChoice = document.getElementById('playerChoice')
 const playerChoices = document.querySelectorAll('.choices');
+let playerScore = 0;
+let computerScore = 0;
+let playerWins = false;
+let computerWins = false;
+document.getElementById('displayScore').innerHTML = 'Computer Score: ' + computerScore  + '   Player Score: ' + playerScore;
 
-// get a random computer choice
+
+// Get a random computer choice
 function computerPlay() {
     let compChoice = [Math.floor(Math.random() * 3)];
     if (compChoice == 0) {
@@ -23,172 +28,105 @@ function computerPlay() {
     }
 }
 
+
 // Get playerChoice
-playerChoices.forEach(playerChoice => playerChoice.addEventListener('click', (e) => {
-    playerSelection = e.target.id;
+playerChoices.forEach(element => element.addEventListener('click', (e) => {  //playerChoice => playerChoice.addEventListener('click', (e) => {
+    playerSelection = element.id; // e.target.id referred to the FA icon!
     computerPlay();
     playRound();
-    playerChoice.innerHTML = playerSelection;
-    // computerChoice.innerHTML = computerSelection;
     displayResult.innerHTML = result;
 }))
 
+
 // Get results
 function playRound() {
+    document.getElementById('displayWinner').innerHTML = ''
     if (playerSelection === computerSelection) {
         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. It\'s a tie!';
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+        playerWins = true;
+        computerWins = false;
+        getScore();
+        checkScore();
         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. You win!';
     } else if (playerSelection === 'rock' && computerSelection === 'paper') {
+        computerWins = true;
+        playerWins = false;
+        getScore();
+        checkScore();
         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. Computer wins!';
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+        playerWins = true;
+        computerWins = false;
+        getScore();
+        checkScore();
         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. You win!';
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+        computerWins = true;
+        playerWins = false;
+        getScore();
+        checkScore();
         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. Computer wins!';
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+        playerWins = true;
+        computerWins = false;
+        getScore();
+        checkScore();
         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. You win!';
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+        computerWins = true;
+        playerWins = false;
+        getScore();
+        checkScore();
         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. Computer wins!';
+    }
+    getScore();
+    checkScore();
+}
+
+
+// Display Running Score and Limit to 5 games
+function getScore() {
+    if (playerWins == true) {
+        playerScore++;
+    } else if (computerWins == true) {
+        computerScore++;
+    } else if (playerWins == false) {
+        playerScore += 0;
+    } else if (computerWins == false) {
+        computerScore += 0;
+    }
+    displayScore.textContent = 'Computer Score: ' + computerScore  + '   Player Score: ' + playerScore;
+}
+
+
+function checkScore() {
+    if (playerScore === 5) {
+        document.getElementById('displayWinner').innerHTML = 'Congratulations- You won!'
+        document.getElementById('displayWinner').style.color = '#283618';
+        document.getElementById('displayWinner').style.font = 'bold 50px';
+        playerScore = 0;
+        computerScore = 0;
+    }
+    if (computerScore === 5) {
+        document.getElementById('displayWinner').innerHTML = 'Sorry you lost. Game Over.'
+        document.getElementById('displayWinner').style.color = '#BC6C25';
+        document.getElementById('displayWinner').style.font = 'bold 50px';
+        playerScore = 0;
+        computerScore = 0;
     }
 }
 
 
 // Add keydown events
-window.addEventListener('keydown', event => {
+document.addEventListener('keydown', event => {
     if (event.key == 'r') {
-        playerSelection === 'rock';
-        // playRound();
+        playerSelection == 'rock';
     } else if (event.key == 'p') {
-        playerSelection === 'paper';
+        playerSelection == 'paper';
     } else if (event.key == 's') {
-        playerSelection === 'scissors';
+        playerSelection == 'scissors';
     } else {
         alert('Please choose rock, paper, or scissors.')
     }
 })
-
-
-
-// // Get results
-// function playRound(playerSelection, computerSelection) {
-//     computerSelection = computerPlay();
-//     if (playerSelection === computerSelection) {
-//         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. It\'s a tie!';
-//     } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
-//         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. You win!';
-//     } else if (playerSelection == 'rock' && computerSelection == 'paper') {
-//         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. Computer wins!';
-//     } else if (playerSelection == 'paper' && computerSelection == 'rock') {
-//         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. You win!';
-//     } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
-//         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. Computer wins!';
-//     } else if (playerSelection == 'scissors' && computerSelection == 'paper') {
-//         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. You win!';
-//     } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
-//         return result = 'You chose ' + playerSelection + '. Computer chose ' + computerSelection + '. Computer wins!';
-//     }
-// }
-
-
-
-// // Making new functions that take in specific choices for each button
-// // function playRoundRock(playerSelection, computerSelection) {
-// //     computerSelection = computerPlay();
-// //     playerSelection == 'rock';
-// //     if (playerSelection === computerSelection) {
-// //         return resultRock = 'You chose ' + playerSelection + '. Computer chose  ' + computerSelection + '. It\'s a tie!';
-// //     };
-    
-// //     console.log(playRoundRock()); // Change this to innerHTML display
-// //     document.getElementById('resultsPara').textContent = resultRock;
-// // }
-// function playRoundRock(playerSelection, computerSelection) {
-//     computerSelection = computerPlay();
-//     if (computerSelection === playerSelection) {
-//         return resultRock = 'You chose ' + playerSelection + '. Computer chose  ' + computerSelection + 'It\'s a tie!';
-//     } else if (computerSelection == 'scissors') {
-//         return resultRock = 'You chose rock. Computer chose ' + computerSelection + '. You win!';
-//     } else if (computerSelection == 'paper') {
-//         return resultRock = 'You chose rock. Computer chose ' + computerSelection + '. Computer wins!';
-//     };
-    
-//     console.log(playRoundRock()); // Change this to innerHTML display
-//     document.getElementById('resultsPara').textContent = resultRock;
-// }
-
-// function playRoundPaper(playerSelection, computerSelection) {
-//     computerSelection = computerPlay();
-//         if (playerSelection === computerSelection) {
-//             return 'You chose paper. ' + 'Computer chose paper. ' + 'It\'s a tie!';
-//         } else if (computerSelection == 'rock') {
-//             return 'You chose paper. ' + 'Computer chose ' + computerSelection + '. You win!';
-//         } else if (computerSelection == 'scissors') {
-//             return 'You chose paper. ' + 'Computer chose ' + computerSelection + '. Computer wins!';
-//         }
-//     console.log(playRoundPaper());
-// }
-
-// function playRoundScissors(playerSelection, computerSelection) {
-//     computerSelection = computerPlay();
-//       // for (i = 0; i < 1; i++) {
-//         if (playerSelection === computerSelection) {
-//             return 'You chose scissors. ' + 'Computer chose ' + computerSelection + '. It\'s a tie!';
-//         } else if (computerSelection == 'paper') {
-//             return 'You chose scissors. ' + 'Computer chose ' + computerSelection + '. You win!';
-//         } else if (computerSelection == 'rock') {
-//             return 'You chose scissors. ' + 'Computer chose ' + computerSelection + '. Computer wins!';
-//         }
-//     console.log(playRoundScissors());
-// // }
-// }
-
-
-
-// // I really wanted below to work. Oh well. I'm leaving it in for when I learn more JS and can figure it out.
-// // function playerInput() {
-// //     //I need to get rid of .toLowerCase() below if I want null to register.
-// //     let playerInput = window.prompt('What\'s your choice?').toLowerCase();
-// //     if (playerInput == '' || playerInput == null) {
-// //         return 'Please enter rock, paper, or scissors.';
-// //     } else if (playerInput == 'rock' || playerInput == 'paper' 
-// //         || playerInput == 'scissors') {
-// //         return 'You chose ' + playerInput + '.';
-// //     } else {
-// //         return 'You must choose rock, paper, or scissors.'
-// //     }
-// // }
-
-// function game(playerSelection, computerPlay) {
-//     const computerSelection = computerPlay();
-//     playRound(playerSelection, computerSelection)
-//     console.log(playRound(playerSelection, computerSelection));
-//     // for (i = 0; i < 5; i++) {
-//     //     let playerSelection = window.prompt('Rock, paper, or scissors?');
-//     //     const computerSelection = computerPlay();
-//     //     playRound(playerSelection, computerSelection)
-//     //     console.log(playRound(playerSelection, computerSelection));
-//     // }
-// }
-
-// // game()
-
-// // Event listeners for buttons
-
-// // Keydown Events
-// window.addEventListener('keydown', event => {
-//     if (event.key == 'r') {
-//         playRoundRock();
-//     } else if (event.key == 'p') {
-//         playRoundPaper();
-//     } else if (event.key == 's') {
-//         playRoundScissors();
-//     } else {
-//         alert('Please choose rock, paper, or scissors.')
-//     }
-// })
-
-// //   document.getElementById("paper").addEventListener("click", game); //DOES NOT WORK!
-//   document.getElementById("scissors").addEventListener("click", playRoundScissors); //WORKS!
-//   document.getElementById("paper").addEventListener("click", playRoundPaper); //WORKS!
-//   document.getElementById("rock").addEventListener("click", playRoundRock); //WORKS!
-// // document.getElementById("rock").addEventListener("click", ()=>{playRound('rock', computerPlay())}); //testing DOES NOT WORK
