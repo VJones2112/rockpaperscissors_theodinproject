@@ -67,3 +67,13 @@ button:hover {
 #results {
     padding: 0 1rem 1rem 1rem;
 }
+
+#displayWinner {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#reset {
+    font-family: 'Gamja Flower', cursive;
+    font-size: x-large;
+}
