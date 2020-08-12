@@ -1,6 +1,6 @@
 // 8.10.20 Think it's done!?
 // 8.11.20 Fixed styling, added a reset button, keydown events need to debug why won't pick up first event
-
+// 8.12.20 FIXED KEYDOWN????
 
 // Declare variables
 let playerSelection;
@@ -14,6 +14,7 @@ let playerScore = 0;
 let computerScore = 0;
 let playerWins = false;
 let computerWins = false;
+
 document.getElementById('displayScore').innerHTML = 'Computer Score: ' + computerScore  + '   Player Score: ' + playerScore;
 displayResult.innerHTML = 'Play Game';
 
@@ -87,7 +88,7 @@ function playRound() {
 }
 
 
-// Display Running Score and Limit to 5 games
+// Display Running Score
 function getScore() {
     if (playerWins == true) {
         playerScore++;
@@ -101,25 +102,21 @@ function getScore() {
     displayScore.textContent = 'Computer Score: ' + computerScore  + '   Player Score: ' + playerScore;
 }
 
-
+// Limit to 5 games
 function checkScore() {
     if (playerScore === 5) {
-        document.getElementById('displayWinner').innerHTML = 'Congratulations- You won!'
+        document.getElementById('displayWinner').innerHTML = 'Congratulations- You won! ' + playerScore + ' to ' + computerScore
         document.getElementById('displayWinner').style.color = '#283618'
-        playerScore = 0;
-        computerScore = 0;
-        // resetGame();
+        resetGame(); 
     }
     if (computerScore === 5) {
-        document.getElementById('displayWinner').innerHTML = 'Sorry you lost. Game Over.'
+        document.getElementById('displayWinner').innerHTML = 'Sorry you lost ' + playerScore + ' to ' + computerScore + '. Game Over.'
         document.getElementById('displayWinner').style.color = '#BC6C25';
-   
-        playerScore = 0;
-        computerScore = 0;
-        // resetGame();
+        resetGame();
     }
 }
 
+// Reset Game Button
 const reset = document.getElementById('reset').addEventListener('click', resetGame);
 function resetGame() {
         displayResult.innerHTML = 'Play Game';
@@ -127,7 +124,6 @@ function resetGame() {
         computerScore = 0;
         displayScore.textContent = 'Computer Score: ' + computerScore  + '   Player Score: ' + playerScore;
     }
-
 
 
 // Add keydown events
@@ -153,6 +149,5 @@ document.addEventListener('keydown', event => {
 const game = () => {
     computerPlay();
     playRound();
-    playerChoice.innerHTML = playerSelection;
     displayResult.innerHTML = result;
 }
